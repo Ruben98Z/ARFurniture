@@ -9,6 +9,7 @@ public class FurnitureManager : MonoBehaviour
 
     public GameObject furniture;
     public TouchHandler touchHandler;
+    public ProductPlacement productPlacement;
 
     #endregion // PUBLIC MEMBERS
 
@@ -18,27 +19,19 @@ public class FurnitureManager : MonoBehaviour
 
 
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-
-    public void ChangeAnchor(string nameAnchor)
+    public void ChangeAnchor(GameObject anchor)
     {
         this.contentPositioningBehaviour = this.planeFinder.GetComponent<ContentPositioningBehaviour>();
-        this.planeAnchor = this.furniture.transform.Find(nameAnchor).GetComponent<AnchorBehaviour>();
+        //this.planeAnchor = this.furniture.transform.Find(nameAnchor).GetComponent<AnchorBehaviour>();
+        this.planeAnchor = anchor.GetComponent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
     }
 
     public void ChangeTouchFurniture(GameObject newFurniture)
     {
         this.touchHandler.TouchFurniture(newFurniture.transform);
+        this.productPlacement.changeFurniture(newFurniture);
     }
+
 
 }

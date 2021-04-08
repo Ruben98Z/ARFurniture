@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furniture: {fileID: 497490761}
   touchHandler: {fileID: 1961940246}
+  productPlacement: {fileID: 1961940248}
   planeFinder: {fileID: 259715466}
 --- !u!1 &195742605
 GameObject:
@@ -478,10 +479,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 40919618}
         m_MethodName: ChangeAnchor
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 936642232}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Anchor_Chair_2
@@ -2298,10 +2299,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 40919618}
         m_MethodName: ChangeAnchor
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1248137381}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Anchor_Table
@@ -2329,6 +2330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1961940247}
   - component: {fileID: 1961940246}
+  - component: {fileID: 1961940248}
   m_Layer: 0
   m_Name: TouchHandler
   m_TagString: Untagged
@@ -2365,6 +2367,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961940248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961940245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f701eb175636b974a95020dd5416b3f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  furniture: {fileID: 854905462}
+  productSize: 1
 --- !u!1 &2004781513
 GameObject:
   m_ObjectHideFlags: 0

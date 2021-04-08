@@ -3,25 +3,17 @@ using Vuforia;
 
 public class ProductPlacement : MonoBehaviour
 {
-    #region PUBLIC_MEMBERS
-    public bool IsPlaced { get; private set; }
-    public bool AnchorIsTracking { get; private set; }
-    #endregion // PUBLIC_MEMBERS
 
 
     #region PRIVATE_MEMBERS
     [Header("Augmentation Objects")]
-    [SerializeField] GameObject chair = null;
+    [SerializeField] GameObject furniture = null;
 
-    //[Header("Control Indicators")]
-    //[SerializeField] GameObject translationIndicator = null;
-    //[SerializeField] GameObject rotationIndicator = null;
 
     [Header("Augmentation Size")]
     [Range(0.1f, 2.0f)]
     [SerializeField] float productSize = 0.65f;
 
-    MeshRenderer chairRenderer;
 
     Camera mainCamera;
     Ray cameraToPlaneRay;
@@ -49,7 +41,7 @@ public class ProductPlacement : MonoBehaviour
                         this.augmentationScale,
                         this.augmentationScale);
 
-        this.chair.transform.localScale = this.productScale;
+        this.furniture.transform.localScale = this.productScale;
     }
 
 
@@ -64,7 +56,7 @@ public class ProductPlacement : MonoBehaviour
                     {
                         if (this.cameraToPlaneHit.collider.gameObject.name == floorName)
                         {
-                            this.chair.PositionAt(this.cameraToPlaneHit.point);
+                            this.furniture.PositionAt(this.cameraToPlaneHit.point);
                         }
                     }
                 
@@ -72,6 +64,13 @@ public class ProductPlacement : MonoBehaviour
     }
     #endregion // MONOBEHAVIOUR_METHODS
 
+
+    #region PUBLIC_METHODS
+    public void changeFurniture(GameObject newFurniture)
+    {
+        this.furniture = newFurniture;
+    }
+    #endregion //PUBLIC_METHODS
 
 
     #region PRIVATE_METHODS
@@ -86,7 +85,7 @@ public class ProductPlacement : MonoBehaviour
         {
             this.floorName = "Floor";
             GameObject floor = new GameObject(this.floorName, typeof(BoxCollider));
-            floor.transform.SetParent(this.chair.transform.parent);
+            floor.transform.SetParent(this.furniture.transform.parent);
             floor.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             floor.transform.localScale = Vector3.one;
             floor.GetComponent<BoxCollider>().size = new Vector3(100f, 0, 100f);
