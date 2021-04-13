@@ -66,6 +66,7 @@ public class ProductPlacement : MonoBehaviour
 
 
     #region PUBLIC_METHODS
+
     public void changeFurniture(GameObject newFurniture)
     {
         this.furniture = newFurniture;

@@ -7,7 +7,6 @@ public class FurnitureManager : MonoBehaviour
 {
     #region PUBLIC_MEMBERS
 
-    public GameObject furniture;
     public TouchHandler touchHandler;
     public ProductPlacement productPlacement;
 
@@ -16,6 +15,8 @@ public class FurnitureManager : MonoBehaviour
     [SerializeField] PlaneFinderBehaviour planeFinder = null;
     ContentPositioningBehaviour contentPositioningBehaviour;
     AnchorBehaviour planeAnchor;
+    SmartTerrain terrain;
+    PositionalDeviceTracker positionalDeviceTracker;
 
 
 
@@ -32,6 +33,19 @@ public class FurnitureManager : MonoBehaviour
         this.touchHandler.TouchFurniture(newFurniture.transform);
         this.productPlacement.changeFurniture(newFurniture);
     }
+
+
+    public void RemoveFurniture()
+    {
+        this.terrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
+        this.positionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
+
+        // Stop and restart trackers
+        this.terrain.Stop(); 
+        this.positionalDeviceTracker.Reset();
+        this.terrain.Start(); 
+    }
+
 
 
 }
