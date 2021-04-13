@@ -103,7 +103,19 @@ public class TouchHandler : MonoBehaviour
     public void TouchFurniture(Transform furniture)
     {
         this.augmentationObject = furniture;
-        
+               
+    }
+
+    public void EnableScale()
+    {
+        if (!enablePinchScaling)
+        {
+            this.enablePinchScaling = true;
+        }
+        else
+        {
+            this.enablePinchScaling = false;
+        }
         
     }
 
