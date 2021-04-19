@@ -99,7 +99,7 @@ public class TouchHandler : MonoBehaviour
 
     #endregion // MONOBEHAVIOUR_METHODS
 
-
+    #region  PUBLIC_METHODS 
     public void TouchFurniture(Transform furniture)
     {
         this.augmentationObject = furniture;
@@ -118,6 +118,8 @@ public class TouchHandler : MonoBehaviour
         }
         
     }
+
+    #endregion //PUBLIC_METHODS
 
     #region PRIVATE_METHODS
 

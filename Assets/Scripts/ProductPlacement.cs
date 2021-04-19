@@ -5,21 +5,18 @@ public class ProductPlacement : MonoBehaviour
 {
 
 
+    public bool IsPlaced { get; private set; }
+
     #region PRIVATE_MEMBERS
-    [Header("Augmentation Objects")]
     [SerializeField] GameObject furniture = null;
-
-
-    [Header("Augmentation Size")]
-    [Range(0.1f, 2.0f)]
-    [SerializeField] float productSize = 0.65f;
+    [SerializeField] float productSize = 1f;
 
 
     Camera mainCamera;
     Ray cameraToPlaneRay;
     RaycastHit cameraToPlaneHit;
 
-    float augmentationScale;
+    float scale;
     Vector3 productScale;
     string floorName;
 
@@ -34,12 +31,9 @@ public class ProductPlacement : MonoBehaviour
         SetupFloor();
 
 
-        this.augmentationScale = VuforiaRuntimeUtilities.IsPlayMode() ? 0.1f : this.productSize;
+        this.scale = VuforiaRuntimeUtilities.IsPlayMode() ? 0.1f : this.productSize;
 
-        this.productScale =
-            new Vector3(this.augmentationScale,
-                        this.augmentationScale,
-                        this.augmentationScale);
+        this.productScale = new Vector3(this.scale, this.scale, this.scale);
 
         this.furniture.transform.localScale = this.productScale;
     }
@@ -70,6 +64,26 @@ public class ProductPlacement : MonoBehaviour
     public void changeFurniture(GameObject newFurniture)
     {
         this.furniture = newFurniture;
+    }
+
+    public void PlaceProduct(Transform anchor)
+    {
+        this.furniture.transform.SetParent(anchor, true);
+    }
+
+    public void RemoveAnchor()
+    {
+        this.furniture.transform.SetParent(null);
+    }
+
+    public void SetIsPlaced(bool var)
+    {
+        this.IsPlaced = var;
+    }
+
+    public GameObject GetFurniture()
+    {
+        return this.furniture;
     }
     #endregion //PUBLIC_METHODS
 
