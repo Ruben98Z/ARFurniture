@@ -76,6 +76,11 @@ public class ProductPlacement : MonoBehaviour
         this.furniture.transform.SetParent(null);
     }
 
+    public void ResetPosition()
+    {
+        this.furniture.transform.position = Vector3.zero;
+    }
+
     public void SetIsPlaced(bool var)
     {
         this.IsPlaced = var;

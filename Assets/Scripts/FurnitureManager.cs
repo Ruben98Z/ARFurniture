@@ -17,7 +17,6 @@ public class FurnitureManager : MonoBehaviour
     [SerializeField] PlaneFinderBehaviour planeFinder = null;
     ContentPositioningBehaviour contentPositioningBehaviour;
     AnchorBehaviour planeAnchor;
-    SmartTerrain terrain;
     PositionalDeviceTracker positionalDeviceTracker;
     GameObject currentFurniture;
 
@@ -66,16 +65,35 @@ public class FurnitureManager : MonoBehaviour
         this.productPlacement.changeFurniture(newFurniture);
     }
 
+    public void DuplicateFurniture()
+    {
+                
+        if (!this.contentPositioningBehaviour.DuplicateStage)
+        {
+            this.contentPositioningBehaviour.DuplicateStage = true;
+        }
+        else
+        {
+            this.contentPositioningBehaviour.DuplicateStage = false;
+        }
+        
+    }
+
 
     public void RemoveFurniture()
     {
-        this.terrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
+        this.productPlacement.SetIsPlaced(false);
+        this.productPlacement.PlaceProduct(this.planeAnchor.transform);
+        
+
+        this.smartTerrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
         this.positionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
 
         // Stop and restart trackers
-        this.terrain.Stop(); 
+        this.smartTerrain.Stop(); 
         this.positionalDeviceTracker.Reset();
-        this.terrain.Start(); 
+        this.smartTerrain.Start();
+        
     }
 
 
@@ -101,7 +119,6 @@ public class FurnitureManager : MonoBehaviour
         this.contentPositioningBehaviour.DuplicateStage = false;
         if (TrackingStatusIsTrackedAndNormal)
         {
-            this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);
             this.productPlacement.PlaceProduct(this.planeAnchor.transform);
             UtilityHelper.EnableRendererColliderCanvas(this.currentFurniture, true);
