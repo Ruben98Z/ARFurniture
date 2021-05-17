@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 
 public class Submenu : MonoBehaviour
@@ -46,6 +47,8 @@ public class Submenu : MonoBehaviour
         currentView.gameObject.SetActive(false);
         view.gameObject.SetActive(true);
         currentView = view;
+        ScrollRect aux = viewport.GetComponent<ScrollRect>();
+        aux.content = currentView.GetComponent<RectTransform>();
     }
 
 }
