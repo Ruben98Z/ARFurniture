@@ -2,20 +2,73 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Menu : MonoBehaviour
 {
+    #region PUBLIC_MEMBERS
+
     public RectTransform menu;
-    float lastPosition;
-    bool open = false;
     public float timeMenu = 0.5f;
 
-    // Start is called before the first frame update
+    #endregion // PUBLIC MEMBERS
+
+    #region PRIVATE_MEMBERS
+
+    float lastPosition;
+    bool open = false;
+
+    List<Transform> views;
+    Transform currentView;
+    ScrollRect scrollView;
+
+    #endregion // PRIVATE_MEMBERS
+
+
+    #region MONOBEHAVIOUR_METHODS
+
     void Start()
     {
+        //Menu
         lastPosition = Screen.width / 2;
         menu.position = new Vector3(-lastPosition, menu.position.y, 0);
+
+        //Submenus
+        Transform[] array = menu.GetComponentsInChildren<Transform>();
+        List<Transform> list = new List<Transform>(array);
+        views = new List<Transform>();
+        int i = 0;
+        bool lastView = false;
+        while(!lastView)
+        {
+            Transform aux = list.Where(obj => obj.name == "Content" + i).SingleOrDefault();
+            if(aux != null)
+            {
+                views.Add(aux);
+                if (i == 0)
+                {
+                    currentView = aux;
+                }
+                else
+                {
+                    aux.gameObject.SetActive(false);
+                }
+                i++;
+            }
+            else
+            {
+                lastView = true;
+            }
+            
+        }
+
+        Transform scrollObject = list.Where(obj => obj.name == "ScrollView").SingleOrDefault();
+        scrollView = scrollObject.GetComponent<ScrollRect>();
     }
+
+    #endregion // MONOBEHAVIOUR_METHODS
+
+    #region PRIVATE_METHODS
 
     IEnumerator move(float time, Vector3 initPos, Vector3 lastPos)
     {
@@ -30,11 +83,17 @@ public class Menu : MonoBehaviour
         menu.position = lastPos;
     }
 
+
+
     void moveMenu(float time, Vector3 initPos, Vector3 lastPos)
     {
         StartCoroutine(move(time, initPos, lastPos));
     }
 
+
+    #endregion // PRIVATE_METHODS
+
+    #region PUBLIC_METHODS
 
     public void OnClickDropMenu()
     {
@@ -48,9 +107,13 @@ public class Menu : MonoBehaviour
         open = !open;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setViewActive(Transform view)
     {
-        
+        currentView.gameObject.SetActive(false);
+        view.gameObject.SetActive(true);
+        currentView = view;
+        scrollView.content = currentView.GetComponent<RectTransform>();
     }
+
+    #endregion //PUBLIC_METHODS
 }
