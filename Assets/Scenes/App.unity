@@ -178,7 +178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 356958bf7b9be2645b078ebd39d1a6a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -303,10 +303,10 @@ RectTransform:
   m_Father: {fileID: 607153100}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 166.4, y: -172.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 166.4, y: 289.4}
+  m_SizeDelta: {x: 100, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19694503
 MonoBehaviour:
@@ -353,7 +353,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1307614280}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 963614451}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &21361934
 GameObject:
@@ -711,6 +733,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 103176555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &103176557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100008, guid: a11d318bf37c01d489a19dc2dc33ed7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 103176555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &122820776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,6 +810,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 122820776}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &132811674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: da90dd5c59fc7b74797111fdae04254f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1598189617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &140716280
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,9 +848,9 @@ RectTransform:
   m_Father: {fileID: 607153100}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -172, y: -329.9}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -172, y: 132.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &140716282
@@ -864,7 +898,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1828031001}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 132811674}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &161509805
 GameObject:
@@ -1263,7 +1319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 05ce2018357d6aa4796df51fbdde991f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1384,9 +1440,9 @@ RectTransform:
   m_Father: {fileID: 607153100}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000005722, y: -172.09998}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 288.90002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &228196806
@@ -1434,7 +1490,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1350085004}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1778871686}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1001 &248399316
 PrefabInstance:
@@ -1772,13 +1850,35 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 678442072}
   toggleTransition: 1
-  graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  graphic: {fileID: 21361936}
+  m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2019709000}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 103176557}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!222 &282173483
 CanvasRenderer:
@@ -2501,7 +2601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6ab1078ea1e79f849bf1ad7edd952a44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2585,6 +2685,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 166c46565a20cbd48b376b1082b8376b,
     type: 3}
   m_PrefabInstance: {fileID: 538556349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &547148405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 89131f46d6bfc864699138153a2cc996,
+    type: 3}
+  m_PrefabInstance: {fileID: 1242981007}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &548637896
 GameObject:
@@ -3562,9 +3668,9 @@ RectTransform:
   m_Father: {fileID: 607153100}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -329.90002}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 131.09998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629225013
@@ -3612,7 +3718,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2101665890}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 547148405}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &640086905
 GameObject:
@@ -3740,7 +3868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c3b366933f8d86d4ebb1dde12bbf99df, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4296,6 +4424,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: setActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &782136554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4390,7 +4529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b6bf673114f02ee4ea9adb25ddc27b4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4701,6 +4840,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828852481}
   m_CullTransparentMesh: 0
+--- !u!1 &856881233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 6aefd9b8d8cb28f4f87b54d78bf0fca3,
+    type: 3}
+  m_PrefabInstance: {fileID: 296098129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &867282206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5240,6 +5385,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100014, guid: 8cef4c90a64b6564ca61184c68b8d442,
     type: 3}
   m_PrefabInstance: {fileID: 940235216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &963614451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 398008aaa9b8a2e4ebd3860a13db4038,
+    type: 3}
+  m_PrefabInstance: {fileID: 122820776}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &984161809
 GameObject:
@@ -6182,6 +6333,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 40919615}
         m_MethodName: OnClickDropMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: setActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7226,7 +7388,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1382616582}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1544141629}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!222 &1300807113
 CanvasRenderer:
@@ -8114,8 +8298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 517.6444, y: 924.98145}
+  m_AnchoredPosition: {x: 0, y: 0.041748047}
+  m_SizeDelta: {x: 517.6444, y: 922.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1492293731 stripped
 GameObject:
@@ -8305,6 +8489,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
+--- !u!1 &1544141629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: f4383bc7fc56a1e44b009cab877fd6c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1500135865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551124289
 GameObject:
   m_ObjectHideFlags: 0
@@ -8455,6 +8645,12 @@ PrefabInstance:
 --- !u!4 &1555036508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: b3cad47395084a24ab9316d8de9eba94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1555036507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1555036509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: b3cad47395084a24ab9316d8de9eba94,
     type: 3}
   m_PrefabInstance: {fileID: 1555036507}
   m_PrefabAsset: {fileID: 0}
@@ -8669,9 +8865,9 @@ RectTransform:
   m_Father: {fileID: 607153100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -172, y: -172.1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -172, y: 288.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576908617
@@ -8719,7 +8915,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1248137381}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 856881233}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1001 &1598189617
 PrefabInstance:
@@ -8941,6 +9159,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652995844}
   m_CullTransparentMesh: 0
+--- !u!1 &1659227596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: ab7e43b46e30f5a409fe73d7d545bfa4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1267660433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742549627
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,7 +9397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ff142c41478d0bc48b1df47d08027270, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9262,6 +9486,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1768248667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1778871686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 4df135dcff5ef7b488faeec987a0fe1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1768248667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1778900032
 GameObject:
   m_ObjectHideFlags: 0
@@ -9319,7 +9549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 891809c0cd51d3f4db9b549f68d5ca1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9774,7 +10004,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 71a8ce627a9c3e94aa5d0be9f8c7f833, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10001,7 +10231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 439fffae3efeb3b47a27139286dcc054, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10213,7 +10443,29 @@ MonoBehaviour:
   m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1313907631}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1659227596}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1879444545
 GameObject:
@@ -11293,13 +11545,35 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1778900034}
   toggleTransition: 1
-  graphic: {fileID: 0}
-  m_Group: {fileID: 0}
+  graphic: {fileID: 1890105717}
+  m_Group: {fileID: 1522700930}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeAnchor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1939551972}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 40919618}
+        m_MethodName: ChangeTouchFurniture
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1555036509}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!222 &2052327438
 CanvasRenderer:

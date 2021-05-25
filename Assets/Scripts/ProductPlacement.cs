@@ -20,6 +20,8 @@ public class ProductPlacement : MonoBehaviour
     Vector3 productScale;
     string floorName;
 
+    bool activeUI;
+
     #endregion // PRIVATE_MEMBERS
 
 
@@ -41,20 +43,23 @@ public class ProductPlacement : MonoBehaviour
 
     void Update()
     {
-
+        if (!activeUI)
+        {
             if (TouchHandler.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
             {
-                    this.cameraToPlaneRay = this.mainCamera.ScreenPointToRay(Input.mousePosition);
+                this.cameraToPlaneRay = this.mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                    if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraToPlaneHit))
+                if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraToPlaneHit))
+                {
+                    if (this.cameraToPlaneHit.collider.gameObject.name == floorName)
                     {
-                        if (this.cameraToPlaneHit.collider.gameObject.name == floorName)
-                        {
-                            this.furniture.PositionAt(this.cameraToPlaneHit.point);
-                        }
+                        this.furniture.PositionAt(this.cameraToPlaneHit.point);
                     }
-                
+                }
+
             }
+        }            
+            
     }
     #endregion // MONOBEHAVIOUR_METHODS
 
@@ -90,12 +95,17 @@ public class ProductPlacement : MonoBehaviour
     {
         return this.furniture;
     }
+
+    public void SetActiveUI(bool var)
+    {
+        this.activeUI = var;
+    }
     #endregion //PUBLIC_METHODS
 
 
     #region PRIVATE_METHODS
 
-    void SetupFloor()
+    public void SetupFloor()
     {
         if (VuforiaRuntimeUtilities.IsPlayMode())
         {

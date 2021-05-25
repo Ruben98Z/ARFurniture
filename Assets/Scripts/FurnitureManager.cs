@@ -12,6 +12,9 @@ public class FurnitureManager : MonoBehaviour
 
     #endregion // PUBLIC MEMBERS
 
+
+    #region PRIVATE_MEMBERS
+
     StateManager stateManager;
     SmartTerrain smartTerrain;
     [SerializeField] PlaneFinderBehaviour planeFinder = null;
@@ -19,9 +22,13 @@ public class FurnitureManager : MonoBehaviour
     AnchorBehaviour planeAnchor;
     PositionalDeviceTracker positionalDeviceTracker;
     GameObject currentFurniture;
+    bool activeUI = false;
 
     static TrackableBehaviour.Status StatusCached = TrackableBehaviour.Status.NO_POSE;
     static TrackableBehaviour.StatusInfo StatusInfoCached = TrackableBehaviour.StatusInfo.UNKNOWN;
+
+    #endregion // PRIVATE MEMBERS
+
 
     public static bool TrackingStatusIsTrackedAndNormal
     {
@@ -35,7 +42,7 @@ public class FurnitureManager : MonoBehaviour
     }
 
 
-
+    #region MONOBEHAVIOUR_METHODS
     void Start()
     {
         VuforiaARController.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
@@ -49,6 +56,9 @@ public class FurnitureManager : MonoBehaviour
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
         
     }
+    #endregion //MONOBEHAVIOUR_METHODS
+
+    #region PUBLIC_METHODS
 
     public void ChangeAnchor(GameObject anchor)
     {
@@ -93,7 +103,15 @@ public class FurnitureManager : MonoBehaviour
         this.smartTerrain.Stop(); 
         this.positionalDeviceTracker.Reset();
         this.smartTerrain.Start();
+        this.productPlacement.SetupFloor();
         
+    }
+
+    public void setActive()
+    {
+        activeUI = !activeUI;
+        this.touchHandler.SetActiveUI(activeUI);
+        this.productPlacement.SetActiveUI(activeUI);
     }
 
 
@@ -117,7 +135,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         this.contentPositioningBehaviour.DuplicateStage = false;
-        if (TrackingStatusIsTrackedAndNormal)
+        if (TrackingStatusIsTrackedAndNormal && !activeUI )
         {
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);
             this.productPlacement.PlaceProduct(this.planeAnchor.transform);
@@ -126,6 +144,8 @@ public class FurnitureManager : MonoBehaviour
 
         }
     }
+
+    #endregion //PUBLIC_METHODS
 
 
     #region VUFORIA_CALLBACKS

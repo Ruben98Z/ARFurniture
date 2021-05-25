@@ -29,20 +29,35 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        initMenu();
+        initSubmenus();      
+    }
+
+    #endregion // MONOBEHAVIOUR_METHODS
+
+    #region PRIVATE_METHODS
+
+
+    void initMenu()
+    {
         //Menu
         lastPosition = Screen.width / 2;
         menu.position = new Vector3(-lastPosition, menu.position.y, 0);
+    }
 
+
+    void initSubmenus()
+    {
         //Submenus
         Transform[] array = menu.GetComponentsInChildren<Transform>();
         List<Transform> list = new List<Transform>(array);
         views = new List<Transform>();
         int i = 0;
         bool lastView = false;
-        while(!lastView)
+        while (!lastView)
         {
             Transform aux = list.Where(obj => obj.name == "Content" + i).SingleOrDefault();
-            if(aux != null)
+            if (aux != null)
             {
                 views.Add(aux);
                 if (i == 0)
@@ -52,6 +67,7 @@ public class Menu : MonoBehaviour
                 else
                 {
                     aux.gameObject.SetActive(false);
+                    //aux.gameObject.GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled; 
                 }
                 i++;
             }
@@ -59,16 +75,12 @@ public class Menu : MonoBehaviour
             {
                 lastView = true;
             }
-            
+
         }
 
         Transform scrollObject = list.Where(obj => obj.name == "ScrollView").SingleOrDefault();
         scrollView = scrollObject.GetComponent<ScrollRect>();
     }
-
-    #endregion // MONOBEHAVIOUR_METHODS
-
-    #region PRIVATE_METHODS
 
     IEnumerator move(float time, Vector3 initPos, Vector3 lastPos)
     {
