@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 
-public class TouchHandler : MonoBehaviour
+public class TouchController : MonoBehaviour
 {
     #region PUBLIC_MEMBERS
 

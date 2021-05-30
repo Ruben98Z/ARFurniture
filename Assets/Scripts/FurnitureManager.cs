@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
+using UnityEngine.SceneManagement;
 
 public class FurnitureManager : MonoBehaviour
 {
     #region PUBLIC_MEMBERS
 
-    public TouchHandler touchHandler;
-    public ProductPlacement productPlacement;
+    public TouchController touchController;
+    public PlaceFurniture placeFurniture;
 
     #endregion // PUBLIC MEMBERS
 
@@ -51,7 +52,7 @@ public class FurnitureManager : MonoBehaviour
         DeviceTrackerARController.Instance.RegisterDevicePoseStatusChangedCallback(OnDevicePoseStatusChanged);
 
         this.contentPositioningBehaviour = this.planeFinder.GetComponent<ContentPositioningBehaviour>();
-        this.currentFurniture = productPlacement.GetFurniture();
+        this.currentFurniture = placeFurniture.GetFurniture();
         this.planeAnchor = this.currentFurniture.GetComponentInParent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
         
@@ -60,68 +61,58 @@ public class FurnitureManager : MonoBehaviour
 
     #region PUBLIC_METHODS
 
-    public void ChangeAnchor(GameObject anchor)
+    public void ChangeAnchorFurniture(GameObject anchor)
     {
-        this.productPlacement.SetIsPlaced(false);
-        //this.planeAnchor = this.furniture.transform.Find(nameAnchor).GetComponent<AnchorBehaviour>();
+        this.placeFurniture.SetIsPlaced(false);
+        //Change anchor
         this.planeAnchor = anchor.GetComponent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
-    }
-
-    public void ChangeTouchFurniture(GameObject newFurniture)
-    {
-        this.currentFurniture = newFurniture;
-        this.touchHandler.TouchFurniture(newFurniture.transform);
-        this.productPlacement.changeFurniture(newFurniture);
-    }
-
-    public void DuplicateFurniture()
-    {
-                
-        if (!this.contentPositioningBehaviour.DuplicateStage)
-        {
-            this.contentPositioningBehaviour.DuplicateStage = true;
-        }
-        else
-        {
-            this.contentPositioningBehaviour.DuplicateStage = false;
-        }
         
     }
+
+    public void HandleFurniture(GameObject newFurniture)
+    {
+        //Change handle furniture
+        this.currentFurniture = newFurniture;
+        this.touchController.TouchFurniture(newFurniture.transform);
+        this.placeFurniture.ChangeFurniture(newFurniture);
+    }
+
 
 
     public void RemoveFurniture()
     {
-        this.productPlacement.SetIsPlaced(false);
-        this.productPlacement.PlaceProduct(this.planeAnchor.transform);
+        this.placeFurniture.SetIsPlaced(false);
+        this.placeFurniture.PlaceProduct(this.planeAnchor.transform);
         
 
         this.smartTerrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
         this.positionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
 
         // Stop and restart trackers
-        this.smartTerrain.Stop(); 
+        this.smartTerrain.Stop();
         this.positionalDeviceTracker.Reset();
         this.smartTerrain.Start();
-        this.productPlacement.SetupFloor();
-        
+        this.placeFurniture.SetFloor();
+        //string currentSceneName = SceneManager.GetActiveScene().name;
+        //SceneManager.LoadScene(currentSceneName);
+
     }
 
     public void setActive()
     {
         activeUI = !activeUI;
-        this.touchHandler.SetActiveUI(activeUI);
-        this.productPlacement.SetActiveUI(activeUI);
+        this.touchController.SetActiveUI(activeUI);
+        this.placeFurniture.SetActiveUI(activeUI);
     }
 
 
     public void OnAutomaticHitTest(HitTestResult result)
     {
 
-        if (this.productPlacement.IsPlaced)
+        if (this.placeFurniture.IsPlaced)
         {
-            this.productPlacement.RemoveAnchor();
-            ////this.currentFurniture.PositionAt(result.Position);
+            this.placeFurniture.RemoveAnchor();
         }
     }
 
@@ -135,12 +126,12 @@ public class FurnitureManager : MonoBehaviour
         }
 
         this.contentPositioningBehaviour.DuplicateStage = false;
-        if (TrackingStatusIsTrackedAndNormal && !activeUI )
+        if (TrackingStatusIsTrackedAndNormal && !activeUI && !this.placeFurniture.IsPlaced)
         {
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);
-            this.productPlacement.PlaceProduct(this.planeAnchor.transform);
+            this.placeFurniture.PlaceProduct(this.planeAnchor.transform);
             UtilityHelper.EnableRendererColliderCanvas(this.currentFurniture, true);
-            this.productPlacement.SetIsPlaced(true);
+            this.placeFurniture.SetIsPlaced(true);
 
         }
     }

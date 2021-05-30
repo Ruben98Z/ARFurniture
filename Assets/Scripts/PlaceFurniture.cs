@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Vuforia;
 
-public class ProductPlacement : MonoBehaviour
+public class PlaceFurniture : MonoBehaviour
 {
 
 
@@ -9,16 +9,14 @@ public class ProductPlacement : MonoBehaviour
 
     #region PRIVATE_MEMBERS
     [SerializeField] GameObject furniture = null;
-    [SerializeField] float productSize = 1f;
 
 
     Camera mainCamera;
     Ray cameraToPlaneRay;
-    RaycastHit cameraToPlaneHit;
+    RaycastHit cameraHit;
 
-    float scale;
-    Vector3 productScale;
     string floorName;
+    GameObject floor;
 
     bool activeUI;
 
@@ -32,29 +30,32 @@ public class ProductPlacement : MonoBehaviour
 
         SetupFloor();
 
-
-        this.scale = VuforiaRuntimeUtilities.IsPlayMode() ? 0.1f : this.productSize;
-
-        this.productScale = new Vector3(this.scale, this.scale, this.scale);
-
-        this.furniture.transform.localScale = this.productScale;
     }
 
 
     void Update()
     {
+
         if (!activeUI)
         {
-            if (TouchHandler.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
+            if (TouchController.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
             {
                 this.cameraToPlaneRay = this.mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraToPlaneHit))
+                if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraHit))
                 {
-                    if (this.cameraToPlaneHit.collider.gameObject.name == floorName)
+                    if (this.cameraHit.collider.gameObject.name == floorName)
                     {
-                        this.furniture.PositionAt(this.cameraToPlaneHit.point);
+                        this.furniture.PositionAt(this.cameraHit.point);
                     }
+
+                    //if (this.cameraHit.collider.gameObject.name != floorName && this.cameraHit.collider.gameObject.name != "Emulator Ground Plane")
+                    //{
+                    //    GameObject product = GameObject.Find(this.cameraHit.collider.gameObject.name);
+                    //    ChangeFurniture(product);
+                        
+                    //}
+
                 }
 
             }
@@ -66,7 +67,7 @@ public class ProductPlacement : MonoBehaviour
 
     #region PUBLIC_METHODS
 
-    public void changeFurniture(GameObject newFurniture)
+    public void ChangeFurniture(GameObject newFurniture)
     {
         this.furniture = newFurniture;
     }
@@ -74,13 +75,17 @@ public class ProductPlacement : MonoBehaviour
     public void PlaceProduct(Transform anchor)
     {
         this.furniture.transform.SetParent(anchor, true);
+        SetFloor();
     }
 
+
+    //Revisar
     public void RemoveAnchor()
     {
         this.furniture.transform.SetParent(null);
     }
 
+    //Revisar
     public void ResetPosition()
     {
         this.furniture.transform.position = Vector3.zero;
@@ -114,13 +119,22 @@ public class ProductPlacement : MonoBehaviour
         else
         {
             this.floorName = "Floor";
-            GameObject floor = new GameObject(this.floorName, typeof(BoxCollider));
-            floor.transform.SetParent(this.furniture.transform.parent);
-            floor.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-            floor.transform.localScale = Vector3.one;
-            floor.GetComponent<BoxCollider>().size = new Vector3(100f, 0, 100f);
+            this.floor = new GameObject(this.floorName, typeof(BoxCollider));
+            this.floor.transform.SetParent(this.furniture.transform.parent);
+            this.floor.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            this.floor.transform.localScale = Vector3.one;
+            this.floor.GetComponent<BoxCollider>().size = new Vector3(100f, 0, 100f);
         }
     }
+
+    public void SetFloor()
+    {
+           
+            this.floor.transform.SetParent(this.furniture.transform.parent);
+        
+    }
+
+
     #endregion // PRIVATE_METHODS
 
 }

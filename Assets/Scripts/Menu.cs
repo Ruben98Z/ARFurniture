@@ -29,6 +29,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         initMenu();
         initSubmenus();      
     }
@@ -67,7 +68,12 @@ public class Menu : MonoBehaviour
                 else
                 {
                     aux.gameObject.SetActive(false);
-                    //aux.gameObject.GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled; 
+                    //if (aux.GetComponent<Image>())
+                    //{
+                    //    aux.GetComponent<Image>().enabled = false;
+                    //}
+                    
+                    
                 }
                 i++;
             }
@@ -123,6 +129,9 @@ public class Menu : MonoBehaviour
     {
         currentView.gameObject.SetActive(false);
         view.gameObject.SetActive(true);
+        //currentView.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        //view.gameObject.GetComponent<MeshRenderer>().enabled = true;
+
         currentView = view;
         scrollView.content = currentView.GetComponent<RectTransform>();
     }
