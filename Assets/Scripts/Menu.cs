@@ -15,11 +15,11 @@ public class Menu : MonoBehaviour
 
     #region PRIVATE_MEMBERS
 
-    float lastPosition;
+    float uiPosition;
     bool open = false;
 
     List<Transform> views;
-    Transform currentView;
+    RectTransform currentView;
     ScrollRect scrollView;
 
     #endregion // PRIVATE_MEMBERS
@@ -42,8 +42,8 @@ public class Menu : MonoBehaviour
     void initMenu()
     {
         //Menu
-        lastPosition = Screen.width / 2;
-        menu.position = new Vector3(-lastPosition, menu.position.y, 0);
+        uiPosition = Screen.width / 2;
+        Debug.Log(uiPosition);
     }
 
 
@@ -57,23 +57,26 @@ public class Menu : MonoBehaviour
         bool lastView = false;
         while (!lastView)
         {
-            Transform aux = list.Where(obj => obj.name == "Content" + i).SingleOrDefault();
-            if (aux != null)
+            Transform content = list.Where(obj => obj.name == "Content" + i).SingleOrDefault();
+            if (content != null)
             {
-                views.Add(aux);
+                views.Add(content);
                 if (i == 0)
                 {
-                    currentView = aux;
+                    currentView = content.GetComponent<RectTransform>();
                 }
                 else
                 {
-                    aux.gameObject.SetActive(false);
+
+                    //aux.gameObject.SetActive(false);
+                    RectTransform contentRectTransform = content.GetComponent<RectTransform>();
+                    contentRectTransform.position = new Vector3(-uiPosition*4, contentRectTransform.position.y, 0);
                     //if (aux.GetComponent<Image>())
                     //{
                     //    aux.GetComponent<Image>().enabled = false;
                     //}
-                    
-                    
+
+
                 }
                 i++;
             }
@@ -121,16 +124,16 @@ public class Menu : MonoBehaviour
             num = 1;
         }
 
-        moveMenu(timeMenu, menu.position, new Vector3(num * lastPosition, menu.position.y, 0));
+        moveMenu(timeMenu, menu.position, new Vector3(num * uiPosition, menu.position.y, 0));
         open = !open;
     }
 
-    public void setViewActive(Transform view)
+    public void SetViewActive(RectTransform view)
     {
-        currentView.gameObject.SetActive(false);
-        view.gameObject.SetActive(true);
-        //currentView.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        //view.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //currentView.gameObject.SetActive(false);
+        //view.gameObject.SetActive(true);
+        currentView.position = new Vector3(-uiPosition, currentView.position.y, currentView.position.z);
+        view.position = new Vector3(uiPosition, view.position.y, view.position.z);
 
         currentView = view;
         scrollView.content = currentView.GetComponent<RectTransform>();

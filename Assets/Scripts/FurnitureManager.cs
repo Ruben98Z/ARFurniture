@@ -25,6 +25,7 @@ public class FurnitureManager : MonoBehaviour
     GameObject currentFurniture;
     bool activeUI = false;
 
+
     static TrackableBehaviour.Status StatusCached = TrackableBehaviour.Status.NO_POSE;
     static TrackableBehaviour.StatusInfo StatusInfoCached = TrackableBehaviour.StatusInfo.UNKNOWN;
 
@@ -46,6 +47,7 @@ public class FurnitureManager : MonoBehaviour
     #region MONOBEHAVIOUR_METHODS
     void Start()
     {
+
         VuforiaARController.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
         VuforiaARController.Instance.RegisterOnPauseCallback(OnVuforiaPaused);
         DeviceTrackerARController.Instance.RegisterTrackerStartedCallback(OnTrackerStarted);
@@ -57,13 +59,16 @@ public class FurnitureManager : MonoBehaviour
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
         
     }
+
+
+   
     #endregion //MONOBEHAVIOUR_METHODS
 
     #region PUBLIC_METHODS
 
     public void ChangeAnchorFurniture(GameObject anchor)
     {
-        this.placeFurniture.SetIsPlaced(false);
+        //this.placeFurniture.SetIsPlaced(false);
         //Change anchor
         this.planeAnchor = anchor.GetComponent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
@@ -93,13 +98,13 @@ public class FurnitureManager : MonoBehaviour
         this.smartTerrain.Stop();
         this.positionalDeviceTracker.Reset();
         this.smartTerrain.Start();
+
+        // Set Floor
         this.placeFurniture.SetFloor();
-        //string currentSceneName = SceneManager.GetActiveScene().name;
-        //SceneManager.LoadScene(currentSceneName);
 
     }
 
-    public void setActive()
+    public void SetActive()
     {
         activeUI = !activeUI;
         this.touchController.SetActiveUI(activeUI);
@@ -110,7 +115,7 @@ public class FurnitureManager : MonoBehaviour
     public void OnAutomaticHitTest(HitTestResult result)
     {
 
-        if (this.placeFurniture.IsPlaced)
+        if (this.placeFurniture.GetIsPlaced())
         {
             this.placeFurniture.RemoveAnchor();
         }
@@ -126,7 +131,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         this.contentPositioningBehaviour.DuplicateStage = false;
-        if (TrackingStatusIsTrackedAndNormal && !activeUI && !this.placeFurniture.IsPlaced)
+        if (TrackingStatusIsTrackedAndNormal && !activeUI)
         {
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);
             this.placeFurniture.PlaceProduct(this.planeAnchor.transform);
@@ -134,6 +139,8 @@ public class FurnitureManager : MonoBehaviour
             this.placeFurniture.SetIsPlaced(true);
 
         }
+
+
     }
 
     #endregion //PUBLIC_METHODS

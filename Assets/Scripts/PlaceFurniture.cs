@@ -17,8 +17,10 @@ public class PlaceFurniture : MonoBehaviour
 
     string floorName;
     GameObject floor;
+    GameObject copy;
 
     bool activeUI;
+    Model furniturePlaced;
 
     #endregion // PRIVATE_MEMBERS
 
@@ -27,7 +29,8 @@ public class PlaceFurniture : MonoBehaviour
     void Start()
     {
         this.mainCamera = Camera.main;
-
+        this.copy = this.furniture;
+        this.furniturePlaced = this.furniture.GetComponent<Model>();
         SetupFloor();
 
     }
@@ -49,16 +52,10 @@ public class PlaceFurniture : MonoBehaviour
                         this.furniture.PositionAt(this.cameraHit.point);
                     }
 
-                    //if (this.cameraHit.collider.gameObject.name != floorName && this.cameraHit.collider.gameObject.name != "Emulator Ground Plane")
-                    //{
-                    //    GameObject product = GameObject.Find(this.cameraHit.collider.gameObject.name);
-                    //    ChangeFurniture(product);
-                        
-                    //}
-
                 }
 
             }
+            
         }            
             
     }
@@ -70,6 +67,7 @@ public class PlaceFurniture : MonoBehaviour
     public void ChangeFurniture(GameObject newFurniture)
     {
         this.furniture = newFurniture;
+        this.furniturePlaced = this.furniture.GetComponent<Model>();
     }
 
     public void PlaceProduct(Transform anchor)
@@ -79,21 +77,20 @@ public class PlaceFurniture : MonoBehaviour
     }
 
 
-    //Revisar
     public void RemoveAnchor()
     {
         this.furniture.transform.SetParent(null);
     }
 
-    //Revisar
-    public void ResetPosition()
-    {
-        this.furniture.transform.position = Vector3.zero;
-    }
 
     public void SetIsPlaced(bool var)
     {
-        this.IsPlaced = var;
+        this.furniturePlaced.SetPlaced(var);
+    }
+
+    public bool GetIsPlaced()
+    {
+        return this.furniturePlaced.GetPlaced();
     }
 
     public GameObject GetFurniture()
@@ -125,13 +122,15 @@ public class PlaceFurniture : MonoBehaviour
             this.floor.transform.localScale = Vector3.one;
             this.floor.GetComponent<BoxCollider>().size = new Vector3(100f, 0, 100f);
         }
+
+        Debug.Log(this.floorName);
     }
 
     public void SetFloor()
     {
            
-            this.floor.transform.SetParent(this.furniture.transform.parent);
-        
+        this.floor.transform.SetParent(this.furniture.transform.parent);
+        Debug.Log(this.floorName);
     }
 
 
