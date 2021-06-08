@@ -3,16 +3,6 @@
 public static class UtilityHelper
 {
 
-    public static void RotateTowardCamera(GameObject augmentation)
-    {
-        if (Vuforia.VuforiaManager.Instance.ARCameraTransform != null)
-        {
-            var lookAtPosition = Vuforia.VuforiaManager.Instance.ARCameraTransform.position - augmentation.transform.position;
-            lookAtPosition.y = 0;
-            var rotation = Quaternion.LookRotation(lookAtPosition);
-            augmentation.transform.rotation = rotation;
-        }
-    }
 
     public static void EnableRendererColliderCanvas(GameObject gameObject, bool enable)
     {
@@ -31,25 +21,5 @@ public static class UtilityHelper
         // Enable canvas':
         foreach (var component in canvasComponents)
             component.enabled = enable;
-    }
-
-    public static int GetNumberOfActiveAnchors()
-    {
-        int numOfAnchors = 0;
-
-        Vuforia.StateManager stateManager = Vuforia.TrackerManager.Instance.GetStateManager();
-
-        if (stateManager != null)
-        {
-            foreach (Vuforia.TrackableBehaviour behaviour in stateManager.GetActiveTrackableBehaviours())
-            {
-                if (behaviour is Vuforia.AnchorBehaviour)
-                {
-                    numOfAnchors += 1;
-                    Debug.Log("Anchor #" + numOfAnchors + ": " + behaviour.TrackableName);
-                }
-            }
-        }
-        return numOfAnchors;
     }
 }
