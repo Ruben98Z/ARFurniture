@@ -7,7 +7,7 @@ public class TouchController : MonoBehaviour
 {
     #region PUBLIC_MEMBERS
 
-    public Transform augmentationObject;
+   
 
     public static bool IsSingleFingerStationary => IsSingleFingerDown() && (Input.GetTouch(0).phase == TouchPhase.Stationary);
 
@@ -17,6 +17,8 @@ public class TouchController : MonoBehaviour
 
 
     #region PRIVATE_MEMBERS
+    Transform furnitureTransform;
+
     const float ScaleRangeMin = 0.1f;
     const float ScaleRangeMax = 2.0f;
 
@@ -35,16 +37,10 @@ public class TouchController : MonoBehaviour
 
     #region MONOBEHAVIOUR_METHODS
 
-    void Start()
-    {
-        this.cachedAugmentationScale = this.augmentationObject.localScale.x;
-        this.cachedAugmentationRotation = this.augmentationObject.localEulerAngles;
-    }
-
     void Update()
     {
         //Rotate
-        if (!activeUI)
+        if (!this.activeUI)
         {
             if (Input.touchCount == 2)
             {
@@ -68,18 +64,17 @@ public class TouchController : MonoBehaviour
                 float scaleAmount = this.cachedAugmentationScale * scaleMultiplier;
                 float scaleAmountClamped = Mathf.Clamp(scaleAmount, ScaleRangeMin, ScaleRangeMax);
 
-                this.augmentationObject.localEulerAngles = this.cachedAugmentationRotation - new Vector3(0, angleDelta * 3f, 0);
+                this.furnitureTransform.localEulerAngles = this.cachedAugmentationRotation - new Vector3(0, angleDelta * 3f, 0);
 
                 if (this.enablePinchScaling)
                 {
-                    this.augmentationObject.localScale = new Vector3(scaleAmountClamped, scaleAmountClamped, scaleAmountClamped);
+                    this.furnitureTransform.localScale = new Vector3(scaleAmountClamped, scaleAmountClamped, scaleAmountClamped);
                 }
 
             }
             else if (Input.touchCount < 2)
             {
-                this.cachedAugmentationScale = this.augmentationObject.localScale.x;
-                this.cachedAugmentationRotation = this.augmentationObject.localEulerAngles;
+                SetScaleRotation();
                 this.isFirstFrameWithTwoTouches = true;
             }
         }
@@ -92,9 +87,15 @@ public class TouchController : MonoBehaviour
     #endregion // MONOBEHAVIOUR_METHODS
 
     #region  PUBLIC_METHODS 
+
+    public void SetScaleRotation()
+    {
+        this.cachedAugmentationScale = this.furnitureTransform.localScale.x;
+        this.cachedAugmentationRotation = this.furnitureTransform.localEulerAngles;
+    }
     public void TouchFurniture(Transform furniture)
     {
-        this.augmentationObject = furniture;
+        this.furnitureTransform = furniture;
     }
 
     public void EnableScale()

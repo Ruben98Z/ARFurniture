@@ -10,6 +10,7 @@ public class FurnitureManager : MonoBehaviour
 
     public TouchController touchController;
     public PlaceFurniture placeFurniture;
+    public GameObject currentFurniture;
 
     #endregion // PUBLIC MEMBERS
 
@@ -22,8 +23,7 @@ public class FurnitureManager : MonoBehaviour
     ContentPositioningBehaviour contentPositioningBehaviour;
     AnchorBehaviour planeAnchor;
     PositionalDeviceTracker positionalDeviceTracker;
-    GameObject currentFurniture;
-    bool activeUI = false;
+    bool activeUI = true;
 
 
     static TrackableBehaviour.Status StatusCached = TrackableBehaviour.Status.NO_POSE;
@@ -53,8 +53,14 @@ public class FurnitureManager : MonoBehaviour
         DeviceTrackerARController.Instance.RegisterTrackerStartedCallback(OnTrackerStarted);
         DeviceTrackerARController.Instance.RegisterDevicePoseStatusChangedCallback(OnDevicePoseStatusChanged);
 
+        SetActive();
+
+        this.placeFurniture.ChangeFurniture(this.currentFurniture);
+        this.touchController.TouchFurniture(this.currentFurniture.transform);
+        this.placeFurniture.SetupFloor();       
+        this.touchController.SetScaleRotation();
+
         this.contentPositioningBehaviour = this.planeFinder.GetComponent<ContentPositioningBehaviour>();
-        this.currentFurniture = placeFurniture.GetFurniture();
         this.planeAnchor = this.currentFurniture.GetComponentInParent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
         
@@ -68,7 +74,6 @@ public class FurnitureManager : MonoBehaviour
 
     public void ChangeAnchorFurniture(GameObject anchor)
     {
-        //this.placeFurniture.SetIsPlaced(false);
         //Change anchor
         this.planeAnchor = anchor.GetComponent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
@@ -106,9 +111,9 @@ public class FurnitureManager : MonoBehaviour
 
     public void SetActive()
     {
-        activeUI = !activeUI;
-        this.touchController.SetActiveUI(activeUI);
-        this.placeFurniture.SetActiveUI(activeUI);
+        this.activeUI = !this.activeUI;
+        this.touchController.SetActiveUI(this.activeUI);
+        this.placeFurniture.SetActiveUI(this.activeUI);
     }
 
 
@@ -131,7 +136,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         this.contentPositioningBehaviour.DuplicateStage = false;
-        if (TrackingStatusIsTrackedAndNormal && !activeUI)
+        if (TrackingStatusIsTrackedAndNormal && !this.activeUI)
         {
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);
             this.placeFurniture.PlaceProduct(this.planeAnchor.transform);

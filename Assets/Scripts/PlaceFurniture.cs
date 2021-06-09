@@ -5,10 +5,9 @@ public class PlaceFurniture : MonoBehaviour
 {
 
 
-    public bool IsPlaced { get; private set; }
 
     #region PRIVATE_MEMBERS
-    [SerializeField] GameObject furniture = null;
+    GameObject furniture;
 
 
     Camera mainCamera;
@@ -17,7 +16,6 @@ public class PlaceFurniture : MonoBehaviour
 
     string floorName;
     GameObject floor;
-    GameObject copy;
 
     bool activeUI;
     Model furniturePlaced;
@@ -29,9 +27,6 @@ public class PlaceFurniture : MonoBehaviour
     void Start()
     {
         this.mainCamera = Camera.main;
-        this.copy = this.furniture;
-        this.furniturePlaced = this.furniture.GetComponent<Model>();
-        SetupFloor();
 
     }
 
@@ -39,7 +34,7 @@ public class PlaceFurniture : MonoBehaviour
     void Update()
     {
 
-        if (!activeUI)
+        if (!this.activeUI)
         {
             if (TouchController.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
             {
@@ -128,7 +123,7 @@ public class PlaceFurniture : MonoBehaviour
 
     public void SetFloor()
     {
-           
+
         this.floor.transform.SetParent(this.furniture.transform.parent);
         Debug.Log(this.floorName);
     }

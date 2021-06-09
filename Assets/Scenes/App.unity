@@ -512,6 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchController: {fileID: 1961940246}
   placeFurniture: {fileID: 1961940248}
+  currentFurniture: {fileID: 1492293731}
   planeFinder: {fileID: 259715466}
 --- !u!1 &49179674
 GameObject:
@@ -603,7 +604,7 @@ GameObject:
   - component: {fileID: 88417842}
   - component: {fileID: 88417841}
   m_Layer: 0
-  m_Name: Pouf
+  m_Name: Pouf_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1639,7 +1640,7 @@ GameObject:
   - component: {fileID: 249042078}
   - component: {fileID: 249042077}
   m_Layer: 0
-  m_Name: Sofa_1
+  m_Name: Sofa_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3438,7 +3439,7 @@ GameObject:
   - component: {fileID: 570161749}
   - component: {fileID: 570161748}
   m_Layer: 0
-  m_Name: Cabinet_1
+  m_Name: Cabinet_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3660,7 +3661,7 @@ GameObject:
   - component: {fileID: 579175957}
   - component: {fileID: 579175956}
   m_Layer: 0
-  m_Name: Cabinet_2
+  m_Name: Cabinet_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3806,7 +3807,7 @@ GameObject:
   - component: {fileID: 596314964}
   - component: {fileID: 596314963}
   m_Layer: 0
-  m_Name: Sofa_0
+  m_Name: Sofa_0_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5777,7 +5778,7 @@ GameObject:
   - component: {fileID: 880368114}
   - component: {fileID: 880368113}
   m_Layer: 0
-  m_Name: Sofa_4
+  m_Name: Sofa_4_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7668,7 +7669,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 40919618}
-        m_MethodName: setActive
+        m_MethodName: SetActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8522,7 +8523,7 @@ GameObject:
   - component: {fileID: 1248137384}
   - component: {fileID: 1248137383}
   m_Layer: 0
-  m_Name: Coffee_Table_1
+  m_Name: Coffee_Table_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8855,7 +8856,7 @@ GameObject:
   - component: {fileID: 1307614283}
   - component: {fileID: 1307614282}
   m_Layer: 0
-  m_Name: Kitchen_Table_2
+  m_Name: Kitchen_Table_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9002,7 +9003,7 @@ GameObject:
   - component: {fileID: 1313907634}
   - component: {fileID: 1313907633}
   m_Layer: 0
-  m_Name: Light_2
+  m_Name: Light_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9320,7 +9321,7 @@ GameObject:
   - component: {fileID: 1350085007}
   - component: {fileID: 1350085006}
   m_Layer: 0
-  m_Name: Kitchen_Table_1
+  m_Name: Kitchen_Table_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9389,7 +9390,7 @@ GameObject:
   - component: {fileID: 1382616585}
   - component: {fileID: 1382616584}
   m_Layer: 0
-  m_Name: Light_1
+  m_Name: Light_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10756,7 +10757,7 @@ GameObject:
   - component: {fileID: 1576883814}
   - component: {fileID: 1576883813}
   m_Layer: 0
-  m_Name: Rack_1
+  m_Name: Rack_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12108,7 +12109,7 @@ GameObject:
   - component: {fileID: 1828031004}
   - component: {fileID: 1828031003}
   m_Layer: 0
-  m_Name: Table_1
+  m_Name: Table_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13122,7 +13123,7 @@ GameObject:
   - component: {fileID: 1939551975}
   - component: {fileID: 1939551974}
   m_Layer: 0
-  m_Name: Bed_2
+  m_Name: Bed_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13365,7 +13366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53beb05560171e479af8fef6af2baab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  augmentationObject: {fileID: 574895252}
 --- !u!4 &1961940247
 Transform:
   m_ObjectHideFlags: 0
@@ -13392,7 +13392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f701eb175636b974a95020dd5416b3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furniture: {fileID: 1492293731}
 --- !u!1 &2019709000
 GameObject:
   m_ObjectHideFlags: 0
@@ -13405,7 +13404,7 @@ GameObject:
   - component: {fileID: 2019709003}
   - component: {fileID: 2019709002}
   m_Layer: 0
-  m_Name: Bed_1
+  m_Name: Bed_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13647,7 +13646,7 @@ GameObject:
   - component: {fileID: 2045235917}
   - component: {fileID: 2045235916}
   m_Layer: 0
-  m_Name: Rack_2
+  m_Name: Rack_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13907,7 +13906,7 @@ GameObject:
   - component: {fileID: 2101665893}
   - component: {fileID: 2101665892}
   m_Layer: 0
-  m_Name: Table_2
+  m_Name: Table_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

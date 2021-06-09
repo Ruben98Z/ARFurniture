@@ -4,6 +4,7 @@ public static class UtilityHelper
 {
 
 
+
     public static void EnableRendererColliderCanvas(GameObject gameObject, bool enable)
     {
         var rendererComponents = gameObject.GetComponentsInChildren<Renderer>(true);
