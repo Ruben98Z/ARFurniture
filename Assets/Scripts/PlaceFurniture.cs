@@ -30,34 +30,28 @@ public class PlaceFurniture : MonoBehaviour
 
     }
 
-
-    void Update()
-    {
-
-        if (!this.activeUI)
-        {
-            if (TouchController.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
-            {
-                this.cameraToPlaneRay = this.mainCamera.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraHit))
-                {
-                    if (this.cameraHit.collider.gameObject.name == floorName)
-                    {
-                        this.furniture.PositionAt(this.cameraHit.point);
-                    }
-
-                }
-
-            }
-            
-        }            
-            
-    }
     #endregion // MONOBEHAVIOUR_METHODS
 
 
     #region PUBLIC_METHODS
+
+    public void UpdatePosition()
+    {
+        if (TouchController.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
+        {
+            this.cameraToPlaneRay = this.mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraHit))
+            {
+                if (this.cameraHit.collider.gameObject.name == floorName)
+                {
+                    this.furniture.PositionAt(this.cameraHit.point);
+                }
+
+            }
+
+        }
+    }
 
     public void ChangeFurniture(GameObject newFurniture)
     {

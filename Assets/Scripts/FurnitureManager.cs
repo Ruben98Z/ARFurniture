@@ -29,6 +29,7 @@ public class FurnitureManager : MonoBehaviour
     static TrackableBehaviour.Status StatusCached = TrackableBehaviour.Status.NO_POSE;
     static TrackableBehaviour.StatusInfo StatusInfoCached = TrackableBehaviour.StatusInfo.UNKNOWN;
 
+
     #endregion // PRIVATE MEMBERS
 
 
@@ -66,8 +67,18 @@ public class FurnitureManager : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        if (!this.activeUI)
+        {
+            this.placeFurniture.UpdatePosition();
 
-   
+            this.touchController.Rotate();
+        }
+    }
+
+
+
     #endregion //MONOBEHAVIOUR_METHODS
 
     #region PUBLIC_METHODS
