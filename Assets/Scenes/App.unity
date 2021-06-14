@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 307085195}
   - component: {fileID: 307085194}
   m_Layer: 0
-  m_Name: Chair_3_Anchor
+  m_Name: chair_3_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4286,7 +4286,7 @@ GameObject:
   - component: {fileID: 640086908}
   - component: {fileID: 640086907}
   m_Layer: 0
-  m_Name: Chair_1_Anchor
+  m_Name: chair_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6262,7 +6262,7 @@ GameObject:
   - component: {fileID: 936642234}
   - component: {fileID: 936642233}
   m_Layer: 0
-  m_Name: Chair_2_Anchor
+  m_Name: chair_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7589,7 +7589,7 @@ GameObject:
   - component: {fileID: 1129270062}
   - component: {fileID: 1129270061}
   m_Layer: 0
-  m_Name: Back
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7611,8 +7611,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -193, y: 414}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: -0.59643, y: -356}
+  m_SizeDelta: {x: 82.66675, y: 79.27214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129270061
 MonoBehaviour:
@@ -7698,7 +7698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a439fff18a35334ca3d76dc7446532d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c403e3e38eeebc4b9fd3593ac5009c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7807,7 +7807,7 @@ GameObject:
   - component: {fileID: 1136852981}
   - component: {fileID: 1136852980}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7829,7 +7829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: 413.99997}
+  m_AnchoredPosition: {x: -179, y: 413.99997}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136852980
@@ -9144,6 +9144,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 71384cbc628fa864eb38a3ce9020699c, type: 3}
       propertyPath: m_Name
       value: chair_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 71384cbc628fa864eb38a3ce9020699c, type: 3}
+      propertyPath: m_TagString
+      value: Furniture
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 71384cbc628fa864eb38a3ce9020699c, type: 3}
       propertyPath: m_LocalPosition.x
