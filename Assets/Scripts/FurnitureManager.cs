@@ -48,14 +48,16 @@ public class FurnitureManager : MonoBehaviour
     #region MONOBEHAVIOUR_METHODS
     void Start()
     {
-
+        //Llamadas de Vuforia
         VuforiaARController.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
         VuforiaARController.Instance.RegisterOnPauseCallback(OnVuforiaPaused);
         DeviceTrackerARController.Instance.RegisterTrackerStartedCallback(OnTrackerStarted);
         DeviceTrackerARController.Instance.RegisterDevicePoseStatusChangedCallback(OnDevicePoseStatusChanged);
 
+
         SetActive();
 
+        //Se inicializa el modelo
         this.placeFurniture.ChangeFurniture(this.currentFurniture);
         this.touchController.TouchFurniture(this.currentFurniture.transform);
         this.placeFurniture.SetupFloor();       
@@ -85,7 +87,7 @@ public class FurnitureManager : MonoBehaviour
 
     public void ChangeAnchorFurniture(GameObject anchor)
     {
-        //Change anchor
+        //Cambia el Anchor
         this.planeAnchor = anchor.GetComponent<AnchorBehaviour>();
         this.contentPositioningBehaviour.AnchorStage = this.planeAnchor;
         
@@ -93,7 +95,7 @@ public class FurnitureManager : MonoBehaviour
 
     public void HandleFurniture(GameObject newFurniture)
     {
-        //Change handle furniture
+        //Cambia el mueble que se vaya a manejar
         this.currentFurniture = newFurniture;
         this.touchController.TouchFurniture(newFurniture.transform);
         this.placeFurniture.ChangeFurniture(newFurniture);
@@ -103,6 +105,7 @@ public class FurnitureManager : MonoBehaviour
 
     public void RemoveFurniture()
     {
+        //Se actualiza el estado del mueble y se le vuelve a asignar su Anchor
         this.placeFurniture.SetIsPlaced(false);
         this.placeFurniture.PlaceProduct(this.planeAnchor.transform);
         
@@ -123,14 +126,12 @@ public class FurnitureManager : MonoBehaviour
     public void SetActive()
     {
         this.activeUI = !this.activeUI;
-        this.touchController.SetActiveUI(this.activeUI);
-        this.placeFurniture.SetActiveUI(this.activeUI);
     }
 
 
     public void OnAutomaticHitTest(HitTestResult result)
     {
-
+        //Cuando el mueble este en el entorno se quita su Anchor
         if (this.placeFurniture.GetIsPlaced())
         {
             this.placeFurniture.RemoveAnchor();
@@ -147,6 +148,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         this.contentPositioningBehaviour.DuplicateStage = false;
+        //Si se ha detectado el plano y la interfaz esta incativa se coloca el mueble
         if (TrackingStatusIsTrackedAndNormal && !this.activeUI)
         {
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);

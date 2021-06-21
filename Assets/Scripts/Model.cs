@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Model : MonoBehaviour
 {
+    #region PRIVATE_MEMBERS
 
     bool IsPlaced;
 
-    // Start is called before the first frame update
+    #endregion // PRIVATE MEMBERS
+
+
+    #region MONOBEHAVIOUR_METHODS
+
     void Start()
     {
         this.IsPlaced = false;
     }
+
+    #endregion //MONOBEHAVIOUR_METHODS
+
+    #region PUBLIC_METHODS
 
     public void SetPlaced(bool var)
     {
@@ -22,4 +31,6 @@ public class Model : MonoBehaviour
     {
         return IsPlaced;
     }
+
+    #endregion //PUBLIC_METHODS
 }

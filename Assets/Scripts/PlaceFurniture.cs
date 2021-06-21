@@ -11,13 +11,12 @@ public class PlaceFurniture : MonoBehaviour
 
 
     Camera mainCamera;
-    Ray cameraToPlaneRay;
+    Ray cameraToPlane;
     RaycastHit cameraHit;
 
     string floorName;
     GameObject floor;
 
-    bool activeUI;
     Model furniturePlaced;
 
     #endregion // PRIVATE_MEMBERS
@@ -37,11 +36,14 @@ public class PlaceFurniture : MonoBehaviour
 
     public void UpdatePosition()
     {
-        if (TouchController.IsSingleFingerDragging || (VuforiaRuntimeUtilities.IsPlayMode() && Input.GetMouseButton(0)))
+        //Se comprueba que solo un dedo esta tocando la pantalla
+        if (TouchController.IsSingleFingerDragging)
         {
-            this.cameraToPlaneRay = this.mainCamera.ScreenPointToRay(Input.mousePosition);
+            //Se obtiene el rayo que va desde la camara hasta el plano
+            this.cameraToPlane = this.mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(this.cameraToPlaneRay, out this.cameraHit))
+            //Si el rayo interacciona con el objeto cuyo nombre sea el del suelo entonces se posiciona el mueble donde este ha interseccionado con el plano
+            if (Physics.Raycast(this.cameraToPlane, out this.cameraHit))
             {
                 if (this.cameraHit.collider.gameObject.name == floorName)
                 {
@@ -87,17 +89,11 @@ public class PlaceFurniture : MonoBehaviour
         return this.furniture;
     }
 
-    public void SetActiveUI(bool var)
-    {
-        this.activeUI = var;
-    }
-    #endregion //PUBLIC_METHODS
-
-
-    #region PRIVATE_METHODS
+    
 
     public void SetupFloor()
     {
+        //Si la aplicación esta en PlayMode entonces se genera un suelo llamado "Emulator Ground Plane"
         if (VuforiaRuntimeUtilities.IsPlayMode())
         {
             this.floorName = "Emulator Ground Plane";
@@ -123,6 +119,6 @@ public class PlaceFurniture : MonoBehaviour
     }
 
 
-    #endregion // PRIVATE_METHODS
+    #endregion //PUBLIC_METHODS
 
 }

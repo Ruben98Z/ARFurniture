@@ -22,6 +22,11 @@ public class Menu : MonoBehaviour
     RectTransform currentView;
     ScrollRect scrollView;
 
+    Text messageText;
+    GameObject message;
+    bool scaleActive = false;
+    float timeMessage = 1.0f;
+
     #endregion // PRIVATE_MEMBERS
 
 
@@ -31,7 +36,9 @@ public class Menu : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.Portrait;
         initMenu();
-        initSubmenus();      
+        initSubmenus();
+        initMessage();
+        
     }
 
     #endregion // MONOBEHAVIOUR_METHODS
@@ -43,7 +50,15 @@ public class Menu : MonoBehaviour
     {
         //Menu
         uiPosition = Screen.width / 2;
+        menu.position = new Vector3(-uiPosition, menu.position.y, 0);
         Debug.Log(uiPosition);
+    }
+
+    void initMessage()
+    {
+        this.messageText = GameObject.Find("MessageText").GetComponent<Text>();
+        this.message = GameObject.Find("Message");
+        this.message.gameObject.SetActive(false);
     }
 
 
@@ -67,14 +82,8 @@ public class Menu : MonoBehaviour
                 }
                 else
                 {
-
-                    //aux.gameObject.SetActive(false);
                     RectTransform contentRectTransform = content.GetComponent<RectTransform>();
                     contentRectTransform.position = new Vector3(-uiPosition*4, contentRectTransform.position.y, 0);
-                    //if (aux.GetComponent<Image>())
-                    //{
-                    //    aux.GetComponent<Image>().enabled = false;
-                    //}
 
 
                 }
@@ -104,6 +113,13 @@ public class Menu : MonoBehaviour
         menu.position = lastPos;
     }
 
+    IEnumerator display(float time)
+    {
+        this.message.SetActive(true);
+        yield return new WaitForSeconds(time);
+        this.message.SetActive(false);
+    }
+
 
 
     void moveMenu(float time, Vector3 initPos, Vector3 lastPos)
@@ -130,13 +146,27 @@ public class Menu : MonoBehaviour
 
     public void SetViewActive(RectTransform view)
     {
-        //currentView.gameObject.SetActive(false);
-        //view.gameObject.SetActive(true);
         currentView.position = new Vector3(-uiPosition, currentView.position.y, currentView.position.z);
         view.position = new Vector3(uiPosition, view.position.y, view.position.z);
 
         currentView = view;
         scrollView.content = currentView.GetComponent<RectTransform>();
+    }
+
+    public void ActiveScale()
+    {
+        if (scaleActive)
+        {
+            this.messageText.text = "Escalado desactivado";
+            scaleActive = false;
+        }
+        else
+        {
+            this.messageText.text = "Escalado activado";
+            scaleActive = true;
+        }
+
+        StartCoroutine(display(timeMessage));
     }
 
     #endregion //PUBLIC_METHODS
