@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 307085195}
   - component: {fileID: 307085194}
   m_Layer: 0
-  m_Name: chair_3_Anchor
+  m_Name: Chair_3_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3725,7 +3725,7 @@ GameObject:
   - component: {fileID: 579175957}
   - component: {fileID: 579175956}
   m_Layer: 0
-  m_Name: Cabinet_2_Anchor
+  m_Name: Cabinet_3_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3871,7 +3871,7 @@ GameObject:
   - component: {fileID: 596314964}
   - component: {fileID: 596314963}
   m_Layer: 0
-  m_Name: Sofa_0_Anchor
+  m_Name: Corner_Sofa_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4350,7 +4350,7 @@ GameObject:
   - component: {fileID: 640086908}
   - component: {fileID: 640086907}
   m_Layer: 0
-  m_Name: chair_1_Anchor
+  m_Name: Chair_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6401,7 +6401,7 @@ GameObject:
   - component: {fileID: 936642234}
   - component: {fileID: 936642233}
   m_Layer: 0
-  m_Name: chair_2_Anchor
+  m_Name: Chair_2_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7891,9 +7891,9 @@ RectTransform:
   m_Father: {fileID: 595389027}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.947}
-  m_AnchorMax: {x: 0, y: 0.947}
-  m_AnchoredPosition: {x: 81, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -179, y: 413}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1136852980
@@ -9067,7 +9067,7 @@ GameObject:
   - component: {fileID: 1313907634}
   - component: {fileID: 1313907633}
   m_Layer: 0
-  m_Name: Light_2_Anchor
+  m_Name: Torchere_4_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9458,7 +9458,7 @@ GameObject:
   - component: {fileID: 1382616585}
   - component: {fileID: 1382616584}
   m_Layer: 0
-  m_Name: Light_1_Anchor
+  m_Name: Torchere_1_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10754,7 +10754,7 @@ GameObject:
   - component: {fileID: 1576883814}
   - component: {fileID: 1576883813}
   m_Layer: 0
-  m_Name: Rack_1_Anchor
+  m_Name: Rack_4_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13618,7 +13618,7 @@ GameObject:
   - component: {fileID: 2045235917}
   - component: {fileID: 2045235916}
   m_Layer: 0
-  m_Name: Rack_2_Anchor
+  m_Name: Rack_5_Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
