@@ -148,7 +148,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         this.contentPositioningBehaviour.DuplicateStage = false;
-        //Si se ha detectado el plano y la interfaz esta incativa se coloca el mueble
+        //Si se ha detectado el plano y la interfaz esta inactiva se coloca el mueble
         if (TrackingStatusIsTrackedAndNormal && !this.activeUI)
         {
             this.contentPositioningBehaviour.PositionContentAtPlaneAnchor(result);
@@ -171,7 +171,6 @@ public class FurnitureManager : MonoBehaviour
 
         stateManager = TrackerManager.Instance.GetStateManager();
 
-        // Check trackers to see if started and start if necessary
         this.positionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
         this.smartTerrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
 
@@ -231,7 +230,7 @@ public class FurnitureManager : MonoBehaviour
 
     void OnDevicePoseStatusChanged(TrackableBehaviour.Status status, TrackableBehaviour.StatusInfo statusInfo)
     {
-        Debug.Log("PlaneManager.OnDevicePoseStatusChanged(" + status + ", " + statusInfo + ")");
+        Debug.Log("FurnitureManager.OnDevicePoseStatusChanged(" + status + ", " + statusInfo + ")");
 
         StatusCached = status;
         StatusInfoCached = statusInfo;

@@ -36,7 +36,7 @@ public class PlaceFurniture : MonoBehaviour
 
     public void UpdatePosition()
     {
-        //Se comprueba que solo un dedo esta tocando la pantalla
+        //Se comprueba que solo un dedo está tocando la pantalla
         if (TouchController.IsSingleFingerDragging)
         {
             //Se obtiene el rayo que va desde la camara hasta el plano
