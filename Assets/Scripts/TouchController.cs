@@ -24,12 +24,12 @@ public class TouchController : MonoBehaviour
 
     Touch[] touches;
     static int lastTouchCount;
-    bool isFirstFrameWithTwoTouches;
-    bool enablePinchScaling;
-    float cachedTouchAngle;
-    float cachedTouchDistance;
-    float cachedAugmentationScale;
-    Vector3 cachedAugmentationRotation;
+    bool firstTimeFingersTouchScreen;
+    bool enableScale;
+    float initialAngle;
+    float initialDistance;
+    float furnitureScale;
+    Vector3 furnitureEulerAngles;
 
     #endregion // PRIVATE_MEMBERS
 
@@ -47,34 +47,34 @@ public class TouchController : MonoBehaviour
             //Se calcula la distancia que hay entre estos dos 
             float currentTouchDistance = Vector2.Distance(firstTouch.position, secondTouch.position);
 
-            //Con la diferencia entre la posición Y y X de los toques se calcula la tangente
+            //Con la diferencia entre la posición de las coordenadas X e Y de los toques se calcula la tangente
             float diff_y = firstTouch.position.y - secondTouch.position.y;
             float diff_x = firstTouch.position.x - secondTouch.position.x;
             float currentTouchAngle = Mathf.Atan2(diff_y, diff_x) * Mathf.Rad2Deg;
 
 
             //Al tocar por primera vez con los dos dedos se guarda la distancia inicial que hay entre ellos y su ángulo
-            if (this.isFirstFrameWithTwoTouches)
+            if (this.firstTimeFingersTouchScreen)
             {
-                this.cachedTouchDistance = currentTouchDistance;
-                this.cachedTouchAngle = currentTouchAngle;
-                this.isFirstFrameWithTwoTouches = false;
+                this.initialDistance = currentTouchDistance;
+                this.initialAngle = currentTouchAngle;
+                this.firstTimeFingersTouchScreen = false;
             }
 
 
             //Se calcula el ángulo delta
-            float angleDelta = currentTouchAngle - this.cachedTouchAngle;
+            float angleDelta = currentTouchAngle - this.initialAngle;
 
-            //Se calcula el escalado del objeto con la distancia inicial y actual de los dedos
-            float scaleMultiplier = (currentTouchDistance / this.cachedTouchDistance);
-            float scaleAmount = this.cachedAugmentationScale * scaleMultiplier;
+            //Se calcula el multiplicador para escalar el objeto con la distancia inicial y actual de los dedos
+            float scaleMultiplier = (currentTouchDistance / this.initialDistance);
+            float scaleAmount = this.furnitureScale * scaleMultiplier;
             float scaleAmountClamped = Mathf.Clamp(scaleAmount, ScaleRangeMin, ScaleRangeMax);
 
             //Se realiza la rotación con el ángulo delta
-            this.furnitureTransform.localEulerAngles = this.cachedAugmentationRotation - new Vector3(0, angleDelta * 3f, 0);
+            this.furnitureTransform.localEulerAngles = this.furnitureEulerAngles - new Vector3(0, angleDelta * 3f, 0);
 
-            //Se escala el modelo si esta activa la opción
-            if (this.enablePinchScaling)
+            //Se escala el modelo si está activa la opción
+            if (this.enableScale)
             {
                 this.furnitureTransform.localScale = new Vector3(scaleAmountClamped, scaleAmountClamped, scaleAmountClamped);
             }
@@ -83,14 +83,14 @@ public class TouchController : MonoBehaviour
         else if (Input.touchCount < 2)
         {
             SetScaleRotation();
-            this.isFirstFrameWithTwoTouches = true;
+            this.firstTimeFingersTouchScreen = true;
         }
     }
 
     public void SetScaleRotation()
     {
-        this.cachedAugmentationScale = this.furnitureTransform.localScale.x;
-        this.cachedAugmentationRotation = this.furnitureTransform.localEulerAngles;
+        this.furnitureScale = this.furnitureTransform.localScale.x;
+        this.furnitureEulerAngles = this.furnitureTransform.localEulerAngles;
     }
     public void TouchFurniture(Transform furniture)
     {
@@ -99,13 +99,13 @@ public class TouchController : MonoBehaviour
 
     public void EnableScale()
     {
-        if (!enablePinchScaling)
+        if (!enableScale)
         {
-            this.enablePinchScaling = true;
+            this.enableScale = true;
         }
         else
         {
-            this.enablePinchScaling = false;
+            this.enableScale = false;
         }
         
     }

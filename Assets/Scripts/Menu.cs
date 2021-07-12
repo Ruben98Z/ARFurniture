@@ -24,6 +24,7 @@ public class Menu : MonoBehaviour
 
     Text messageText;
     GameObject message;
+    GameObject buttonBack;
     bool scaleActive = false;
     float timeMessage = 1.0f;
 
@@ -51,6 +52,8 @@ public class Menu : MonoBehaviour
         //Menu
         uiPosition = Screen.width / 2;
         menu.position = new Vector3(-uiPosition, menu.position.y, 0);
+        buttonBack = GameObject.Find("Back");
+        buttonBack.SetActive(false);
         Debug.Log(uiPosition);
     }
 
@@ -151,6 +154,15 @@ public class Menu : MonoBehaviour
 
         currentView = view;
         scrollView.content = currentView.GetComponent<RectTransform>();
+
+        if(currentView.gameObject.name != "Content0")
+        {
+            buttonBack.SetActive(true);
+        }
+        else
+        {
+            buttonBack.SetActive(false);
+        }
     }
 
     public void ActiveScale()
