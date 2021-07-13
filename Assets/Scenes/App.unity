@@ -583,7 +583,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sofa 3
+  m_Text: "Sof\xE1 3"
 --- !u!222 &49179677
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2415,7 +2415,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lamparas
+  m_Text: "L\xE1mparas"
 --- !u!222 &387166722
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2852,7 +2852,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sofa 1
+  m_Text: "Sof\xE1 1"
 --- !u!222 &490551577
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6046,7 +6046,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lampara 2
+  m_Text: "L\xE1mpara 2"
 --- !u!222 &906029469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7631,7 +7631,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Estanterias
+  m_Text: "Estanter\xEDas"
 --- !u!222 &1106721284
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7849,7 +7849,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lampara 1
+  m_Text: "L\xE1mpara 1"
 --- !u!222 &1134937460
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9046,7 +9046,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sofa 2
+  m_Text: "Sof\xE1 2"
 --- !u!222 &1309844775
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10141,7 +10141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sofas
+  m_Text: "Sof\xE1s"
 --- !u!222 &1497044271
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14158,7 +14158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Estanteria 1
+  m_Text: "Estanter\xEDa 1"
 --- !u!222 &2138262359
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14236,7 +14236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Estanteria 2
+  m_Text: "Estanter\xEDa 2"
 --- !u!222 &2139110850
 CanvasRenderer:
   m_ObjectHideFlags: 0
